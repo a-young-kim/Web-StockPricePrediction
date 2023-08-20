@@ -1,0 +1,37 @@
+{
+  "name": "stockprediction",
+  "version": "1.0.0",
+  "description": "kw-graduation",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-young-kim/Web-StockPricePrediction.git"
+  },
+  "keywords": [
+    "stock"
+  ],
+  "author": "ayoung-kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-young-kim/Web-StockPricePrediction/issues"
+  },
+  "homepage": "https://github.com/a-young-kim/Web-StockPricePrediction#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-mysql-session": "^3.0.0",
+    "express-session": "^1.17.3",
+    "fs": "0.0.1-security",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "nodemon": "^3.0.1"
+  }
+}
