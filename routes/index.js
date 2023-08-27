@@ -16,11 +16,8 @@ router.get('/', function(req, res){
 // POST
 router.post('/', function(req, res){
     const filePath = path.join(__dirname, '../views/index.html');
-    res.sendFile(filePath, err => {
-        if (err) {
-            res.status(500).send('Error sending the file.');
-        }
-    });
+    console.log(req.body);
+    res.send('dkdk');
 });
 
 module.exports = router;

@@ -1,45 +1,50 @@
+
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("searchForm");
-    var progressModal = document.getElementById("progressModal");
-  
-    form.addEventListener("submit", function(event) {
+  var form = document.getElementById("searchForm"); // 폼 요소 가져오기
+  var progressModal = new bootstrap.Modal(document.getElementById("progressModal"));
+
+  form.addEventListener("submit", async function(event) {
       event.preventDefault(); // 기본 폼 제출 동작을 막음
-  
-      // 모달 표시
-      showModalWithFocus();
-  
-      // 여기서 실제로 수행해야 할 작업을 시뮬레이션
-      setTimeout(function() {
-        // 작업 완료 후 모달 닫기
-        hideModal();
-  
-        // 다음 작업 또는 동작 실행
-        alert("진행이 완료되었습니다. 다음으로 넘어갑니다.");
-  
-        // 폼 제출
-        form.submit();
-      }, 3000); // 시뮬레이션을 위해 3초 대기
-    });
-  });
-  
-  function showModalWithFocus() {
-    var progressModal = document.getElementById("progressModal");
-    var modal = new bootstrap.Modal(progressModal);
-    modal.show();
-  
-    // 모달 표시 후 입력 요소에 포커스
-    progressModal.addEventListener('shown.bs.modal', function() {
-      var input = progressModal.querySelector('input');
-      if (input) {
-        input.focus();
+      const company = form.querySelector('input[type="search"]').value; // 회사명
+
+      showModalWithFocus(progressModal);
+
+      const formData = new FormData(form);
+      try {
+          const response = await fetch("/", {
+              method: "POST",
+              body: formData,
+          });
+
+          // 여기서 response를 처리하거나, 다음 작업을 진행할 수 있습니다.
+          console.log('Response:', response);
+          // 모달 숨기기
+          await sleep(10000);
+
+          hideModal(progressModal);
+      } catch (error) {
+          console.error('Error:', error);
+          hideModal(progressModal);
+          alert('작업 도중 오류가 발생했습니다.');
       }
-    });
+  });
+
+  function showModalWithFocus(modal) {
+      modal.show();
+
+      // 모달 표시 후 입력 요소에 포커스
+      var input = modal._element.querySelector('input');
+      if (input) {
+          input.focus();
+      }
   }
-  
-  function hideModal() {
-    var progressModal = document.getElementById("progressModal");
-    var modal = bootstrap.Modal.getInstance(progressModal);
+
+  function hideModal(modal) {
     modal.hide();
   }
-  
-  
+});
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
