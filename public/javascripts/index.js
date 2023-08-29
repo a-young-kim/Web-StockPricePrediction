@@ -9,17 +9,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
       showModalWithFocus(progressModal);
 
-      const formData = new FormData(form);
       try {
           const response = await fetch("/", {
               method: "POST",
-              body: formData,
+              body: JSON.stringify({ company: company }),
+              headers: {
+                "Content-Type": "application/json",
+              },
           });
 
           // 여기서 response를 처리하거나, 다음 작업을 진행할 수 있습니다.
           console.log('Response:', response);
           // 모달 숨기기
-          await sleep(10000);
+          await sleep(1000);
 
           hideModal(progressModal);
       } catch (error) {

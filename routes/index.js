@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const request = require('request');
 
 const router = express.Router();
 
@@ -15,9 +16,24 @@ router.get('/', function(req, res){
 
 // POST
 router.post('/', function(req, res){
-    const filePath = path.join(__dirname, '../views/index.html');
-    console.log(req.body);
-    res.send('dkdk');
+    const company = req.body.company;
+    // flask로 전송
+    const flaskServer = 'http://localhost:5000';
+    const options = {
+        url: flaskServer,
+        method: 'POST',
+        json: {
+            company: company
+        },
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+    
+    request.post(options, function(err, httpResponse, body){
+        if(err) console.log(err);
+        else console.log(body);
+    });
 });
 
 module.exports = router;
