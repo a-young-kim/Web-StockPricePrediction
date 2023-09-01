@@ -1,13 +1,14 @@
 import numpy as np
 from flask import Flask, request, jsonify
+from crawling import *
 
 app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def get_data():
     company = request.json
-    print(company)
-    print('1',flush=True)
+    print(crawling(company))
+
     result = {'message': 'Data received successfully', 'data': company}
     return jsonify(result)
 

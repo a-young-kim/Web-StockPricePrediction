@@ -106,3 +106,5 @@ dist
 .jshintrc
 
 __pycache__
+
+chromedriver_win32
