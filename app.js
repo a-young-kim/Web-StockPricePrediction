@@ -12,6 +12,7 @@ var MySQLStore = require("express-mysql-session")(sessionParser);
 const indexRouter = require("./routes/index");
 
 // DB 라우터
+const articleRouter = require("./routes/api/article");
 
 const app = express();
 
@@ -57,6 +58,9 @@ app.use(express.urlencoded({ extended: false }));
 
 //
 app.use("/", indexRouter);
+
+// DB
+app.use("/api/article", articleRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

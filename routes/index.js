@@ -32,7 +32,22 @@ router.post('/', function(req, res){
     
     request.post(options, function(err, httpResponse, body){
         if(err) console.log(err);
-        else console.log(body);
+        else {
+            console.log(body);
+            // article
+            const API_article = {
+                url: req.headers.origin + '/api/article/save',
+                method: 'POST',
+                json:{
+                    title: body.title,
+                    company: body.company,
+                    date:body.date,
+                },
+            };
+            request.post(API_article, function(err, httpResponse, body){
+                // 데이터 저장
+            });
+        }
     });
 });
 
