@@ -34,18 +34,21 @@ router.post('/', function(req, res){
         if(err) console.log(err);
         else {
             console.log(body);
+
+            const data = {
+                title: body.title,
+                company: body.company,
+                date:body.date,
+            };
+
             // article
             const API_article = {
                 url: req.headers.origin + '/api/article/save',
                 method: 'POST',
-                json:{
-                    title: body.title,
-                    company: body.company,
-                    date:body.date,
-                },
+                json: data,
             };
             request.post(API_article, function(err, httpResponse, body){
-                // 데이터 저장
+                res.json(data);
             });
         }
     });

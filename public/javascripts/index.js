@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   form.addEventListener("submit", async function(event) {
       event.preventDefault(); // 기본 폼 제출 동작을 막음
       const company = form.querySelector('input[type="search"]').value; // 회사명
+      setModalText("데이터 수집 시작");
 
       showModalWithFocus(progressModal);
 
@@ -19,11 +20,16 @@ document.addEventListener("DOMContentLoaded", function() {
           });
 
           // 여기서 response를 처리하거나, 다음 작업을 진행할 수 있습니다.
-          console.log('Response:', response);
+          const responseData = await response.json();
+          console.log('Response:', responseData);
+
+          setModalText("데이터 수집 완료 및 예측 시작");
+
           // 모달 숨기기
           await sleep(1000);
 
           hideModal(progressModal);
+
       } catch (error) {
           console.error('Error:', error);
           hideModal(progressModal);
@@ -44,8 +50,13 @@ document.addEventListener("DOMContentLoaded", function() {
   function hideModal(modal) {
     modal.hide();
   }
-});
 
+  function setModalText(text){
+    const modalText = document.getElementById("modal-text");
+
+    modalText.textContent = text;
+  }
+});
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
