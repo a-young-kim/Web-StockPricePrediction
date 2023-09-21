@@ -31,7 +31,7 @@ router.post('/', function(req, res){
     };
     
     request.post(options, function(err, httpResponse, body){
-        if(err) console.log(err);
+        if(err) res.status(500).json({ error: '서버에서 오류가 발생했습니다.' });
         else {
             console.log(body);
 

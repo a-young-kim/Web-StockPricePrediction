@@ -13,28 +13,29 @@
 
 </head>
 <body>
-  <div id="title">FutureStock</div>
-  <div class="row p-5 container"></div>
-  <div class="row justify-content-md-center container-fluid">
-    <div class="col-6">
-      소개
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5 styleLeft">
+        <div class="row col-md-5" id="LeftFirst">
+          <h1>FutureStock</h1>
+          <h3>: IT 기업 주가 예측 하루 단위</h3>
+        </div>
+        <div class="row col-md-5 company">
+          <form id="searchForm" class="p-3" method="post" style="display: flex;">
+            <input class="form-control me-2" type="search" placeholder="회사명" aria-label="Search" style="flex-grow: 1; font-size: 20px; padding: 12px;">
+            <button class="btn btn-outline-success" type="submit" style="font-size: 20px; padding: 12px;">Search</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-7 styleRight">
+          <p></p>
+      </div>
+    </div>
+    <div class="text-between-divs">
+      <h1 id="title">FutureStock</h1>
     </div>
   </div>
-  <div class="row justify-content-md-center container-fluid">
-    <div class="col-6">
-      <form id="searchForm" class="p-3" method="post" style="display: flex;">
-        <input class="form-control me-2" type="search" placeholder="회사명" aria-label="Search" style="flex-grow: 1; font-size: 18px; padding: 12px;">
-        <button class="btn btn-outline-success" type="submit" style="font-size: 18px; padding: 12px;">Search</button>
-      </form>
-    </div>
-  </div>
-  <div class="row p-5 container"></div>
-  <div class="row justify-content-md-center container-fluid">
-    <div class="col-6">
-      내역
-    </div>
-  </div>
-
+  
   <!-- Modal -->
   <div class="modal" data-bs-backdrop="static" id="progressModal" tabindex="-1" aria-labelledby="progressModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

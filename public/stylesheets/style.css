@@ -1,9 +1,56 @@
+body{
+  font-family: 'RixInooAriDuriR', sans-serif;
+}
+
+.styleLeft{
+  background-color:white;
+  height:100vh;
+}
+
+.styleRight{
+  background-color:yellow;
+  height:100vh;
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.text-between-divs {
+  font-size:large;
+  top: 1%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  z-index: 1; 
+  font-family: 'RixInooAriDuriR', sans-serif;
+  color:white;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: black;
+}
+
 #title {
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    background-color: purple;
-    color: white;
-    padding: 13px;
-  }
-  
+  font-size:4rem;
+}
+
+#LeftFirst{
+  position: absolute;
+  top: 12%;
+  padding:2rem;
+}
+
+.company{
+  top: 85%;
+  position: absolute;
+}
+
+@font-face {
+  font-family: 'PartialSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RixInooAriDuriR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
