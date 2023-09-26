@@ -19,15 +19,23 @@ document.addEventListener("DOMContentLoaded", function() {
               },
           });
 
-          // 여기서 response를 처리하거나, 다음 작업을 진행할 수 있습니다.
           const responseData = await response.json();
           console.log('Response:', responseData);
 
           setModalText("데이터 수집 완료 및 예측 시작");
 
-          // 모달 숨기기
-          await sleep(1000);
+          // 모델 학습 시작
+          const response2 = await fetch("/model", {
+            method: "POST",
+            body: JSON.stringify(responseData),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
 
+          const responseData2 = await response2.json();
+          console.log('Response2:', responseData2);
+          
           hideModal(progressModal);
 
       } catch (error) {

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from flask import Flask, request, jsonify
 from crawling import *
-from model import *
+from kobert import *
 
 app = Flask(__name__)
 
@@ -21,10 +21,15 @@ def get_data():
     
     return jsonify(data)
 
+@app.route('/kobert', methods=['POST'])
 def RunModel():
     data = request.json
-
-    #result = model()
+    result = kobert(data["title"])
+    
+    result['company'] = data['company']
+    result['date'] = data['date']
+    
+    return jsonify(result)
 
 if __name__ == '__main__':   
     app.run(host='localhost', port=5000, debug=True)

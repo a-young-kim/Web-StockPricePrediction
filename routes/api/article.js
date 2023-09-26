@@ -8,4 +8,10 @@ router.post("/save", async(req, res) => {
     res.send(JSON.stringify(users));
 });
 
+router.post("/saveClass", async(req, res) => {
+    const users = await mysql.query("saveClass", [req.body.class, req.body.date, req.body.company]);
+
+    res.send(JSON.stringify(users));
+});
+
 module.exports = router;
