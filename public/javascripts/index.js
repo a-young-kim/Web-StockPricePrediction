@@ -1,5 +1,24 @@
 
 document.addEventListener("DOMContentLoaded", function() {
+  
+  const RightDiv = document.getElementById("RightDiv");
+  const title = document.getElementById("title"); 
+
+  RightDiv.addEventListener('mouseenter', () => {
+      const RightDivColor = document.querySelector('#RightDiv'); 
+      if (getComputedStyle(RightDivColor).backgroundColor === 'rgb(211, 211, 211)') {
+          title.textContent = 'This text is added dynamically!';
+      }
+  });
+
+  RightDiv.addEventListener('mouseleave', () => {
+      const RightDivColor = document.querySelector('#RightDiv');
+      if (getComputedStyle(RightDivColor).backgroundColor === 'rgb(255, 255, 0)') {
+          title.textContent = '';
+      }
+  });
+
+
   var form = document.getElementById("searchForm"); // 폼 요소 가져오기
   var progressModal = new bootstrap.Modal(document.getElementById("progressModal"));
 
@@ -35,7 +54,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
           const responseData2 = await response2.json();
           console.log('Response2:', responseData2);
-          
+          title.textContent = responseData2.class;
+
+          changeBackgroundColor('red');
           hideModal(progressModal);
 
       } catch (error) {
@@ -68,4 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function changeBackgroundColor(color) {
+  RightDiv.style.backgroundColor = color;
 }

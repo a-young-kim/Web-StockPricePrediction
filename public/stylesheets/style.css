@@ -13,6 +13,12 @@ body{
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.15);
 }
 
+.styleRight:hover{
+  background-color:lightgray;
+  height:100vh;
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.15);
+}
+
 .text-between-divs {
   font-size:large;
   top: 1%;
@@ -39,6 +45,19 @@ body{
 .company{
   top: 85%;
   position: absolute;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+.title {
+  text-align: center;
 }
 
 @font-face {
