@@ -18,7 +18,7 @@
       <div class="col-md-5 styleLeft" id="LeftDiv">
         <div class="row col-md-5" id="LeftFirst">
           <h1>FutureStock</h1>
-          <h3>: IT 기업 주가 예측 하루 단위</h3>
+          <h3 id="webExp">: IT 기업에 대한 다양한 뉴스 데이터를 수집하고 분석하여 주식 시장의 다음날 예측을 제공합니다.</h3>
         </div>
         <div class="row col-md-5 company">
           <form id="searchForm" class="p-3" method="post" style="display: flex;">
@@ -30,6 +30,7 @@
       <div class="col-md-7 styleRight" id="RightDiv">
           <div class="show">
             <h2 id="title"></h2>
+            <h3 id="subTitle"></h3>
           </div>
       </div>
     </div>
@@ -43,7 +44,14 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body text-center">
-          <p id = "modal-text">진행 중...</p>
+          <h3 id = "modal-text"></h3>
+          <h4 id= 'company'></h4>
+          <h4 id = 'date'></h4>
+
+          <div class="loadingio-spinner-spinner-u6m31m85v5d"><div class="ldio-dmfz9u7de6s">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+            </div></div>
+
         </div>
       </div>
     </div>

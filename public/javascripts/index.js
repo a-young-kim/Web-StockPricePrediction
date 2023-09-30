@@ -3,11 +3,14 @@ document.addEventListener("DOMContentLoaded", function() {
   
   const RightDiv = document.getElementById("RightDiv");
   const title = document.getElementById("title"); 
+  const subTitle = document.getElementById("subTitle"); 
 
   RightDiv.addEventListener('mouseenter', () => {
       const RightDivColor = document.querySelector('#RightDiv'); 
       if (getComputedStyle(RightDivColor).backgroundColor === 'rgb(211, 211, 211)') {
-          title.textContent = 'This text is added dynamically!';
+          title.textContent = '예측 결과가 입력되는 공간입니다.';
+          subTitle.textContent = '왼쪽 아래의 입력란에 회사 이름을 적어보세요.';
+
       }
   });
 
@@ -15,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const RightDivColor = document.querySelector('#RightDiv');
       if (getComputedStyle(RightDivColor).backgroundColor === 'rgb(255, 255, 0)') {
           title.textContent = '';
+          subTitle.textContent = '';
       }
   });
 
@@ -25,6 +29,10 @@ document.addEventListener("DOMContentLoaded", function() {
   form.addEventListener("submit", async function(event) {
       event.preventDefault(); // 기본 폼 제출 동작을 막음
       const company = form.querySelector('input[type="search"]').value; // 회사명
+
+      const companyText = document.getElementById("company");
+      companyText.textContent = 'company: ' + company;
+
       setModalText("데이터 수집 시작");
 
       showModalWithFocus(progressModal);
@@ -56,7 +64,18 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log('Response2:', responseData2);
           title.textContent = responseData2.class;
 
-          changeBackgroundColor('red');
+          if(title.textContent === '상승'){
+            changeBackgroundColor('red');
+          }
+
+          else if(title.textContent === '하락'){
+            changeBackgroundColor('blue');
+          }
+
+          else if(title.textContent === '중립') {
+            changeBackgroundColor('green');
+          }
+
           hideModal(progressModal);
 
       } catch (error) {
