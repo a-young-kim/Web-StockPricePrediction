@@ -38,12 +38,16 @@ body{
 
 #LeftFirst{
   position: absolute;
-  top: 12%;
-  padding:2rem;
+  top: 15%;
 }
 
-.company{
-  top: 85%;
+#company{
+  top: 35%;
+  position: absolute;
+}
+
+#acumulated{
+  top: 55%;
   position: absolute;
 }
 
@@ -59,9 +63,25 @@ body{
   text-align: center;
 }
 
-#webExp {
-  line-height: 2;
+.overlined {
+  position: relative;
+  font-size:35px;
 }
+
+.overlined::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  width: 60px; /* 라인의 길이를 조절합니다 */
+  border-top: 6px solid rgb(163, 197, 8); /* 라인의 색상 및 두께를 조절합니다 */
+}
+
+.overlined_next {
+  font-size:25px;
+  line-height:1.5;
+}
+
 
 @keyframes ldio-dmfz9u7de6s {
   0% { opacity: 1 }
@@ -147,13 +167,18 @@ body{
 @font-face {
   font-family: 'PartialSansKR-Regular';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+  font-weight: bold;
+  font-style: bold;
 }
 
 @font-face {
   font-family: 'RixInooAriDuriR';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+  font-weight: bold;
+  font-style: bold;
+}
+
+
+#companyTable{
+  font-size:32px;
 }

@@ -10,6 +10,8 @@ var MySQLStore = require("express-mysql-session")(sessionParser);
 
 // html 라우터 
 const indexRouter = require("./routes/index");
+const companyRouter = require("./routes/company");
+const pastTableRouter = require("./routes/pastTable");
 
 // DB 라우터
 const articleRouter = require("./routes/api/article");
@@ -30,7 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/public/images", express.static("images"));
 app.use("/public/fonts", express.static("fonts"));
-app.use("/public/uploads", express.static("uploads"));
+app.use("/public/javascripts", express.static("javascripts"));
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -58,6 +60,8 @@ app.use(express.urlencoded({ extended: false }));
 
 //
 app.use("/", indexRouter);
+app.use("/company", companyRouter);
+app.use("/pastTable", pastTableRouter);
 
 // DB
 app.use("/api/article", articleRouter);

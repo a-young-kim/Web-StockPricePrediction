@@ -40,16 +40,19 @@ router.post('/', function(req, res){
                 company: body.company,
                 date:body.date,
             };
-
-            // article
-            const API_article = {
-                url: req.headers.origin + '/api/article/save',
-                method: 'POST',
-                json: data,
-            };
-            request.post(API_article, function(err, httpResponse, body){
-                res.json(data);
-            });
+            
+            if(body.title !== ''){
+                 // article
+                const API_article = {
+                    url: req.headers.origin + '/api/article/save',
+                    method: 'POST',
+                    json: data,
+                };
+                request.post(API_article, function(err, httpResponse, body){
+                    res.json(data);
+                });
+            }
+            else res.json(data);    
         }
     });
 });
@@ -93,5 +96,18 @@ router.post('/model', function(req, res){
         }
     });
 });
+
+router.post('/getTopThree', function(req, res){
+    const API_article = {
+        url: req.headers.origin + '/api/article/getTopThree',
+        method: 'POST',
+    };
+    
+    request.post(API_article, function(err, httpResponse, body){
+        res.json(JSON.parse(body));
+    });
+});
+
+
 
 module.exports = router;

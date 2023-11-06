@@ -14,4 +14,19 @@ router.post("/saveClass", async(req, res) => {
     res.send(JSON.stringify(users));
 });
 
+router.post("/getTopThree", async(req, res) => {
+    const users = await mysql.query("getTopThree");
+    res.json(users);
+});
+
+router.post("/getAllTable", async(req, res) => {
+    const users = await mysql.query("getAllTable");
+    res.json(users);
+});
+
+router.post("/getCompanyTable", async(req, res) => {
+    const users = await mysql.query("getCompanyTable", [req.body.company]);
+    res.json(users);
+});
+
 module.exports = router;
