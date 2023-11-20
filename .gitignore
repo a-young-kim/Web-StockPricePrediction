@@ -110,3 +110,5 @@ __pycache__
 chromedriver_win32
 
 flask/*.pth
+flask/*.joblib
+*.csv

@@ -3,6 +3,8 @@ import pandas as pd
 from flask import Flask, request, jsonify
 from crawling import *
 from kobert import *
+from bolingerBand import *
+from result import *
 
 app = Flask(__name__)
 
@@ -24,11 +26,21 @@ def get_data():
 @app.route('/kobert', methods=['POST'])
 def RunModel():
     data = request.json
-    result = kobert(data["title"])
+
+    kobertResult, logits = kobert(data['title'])    
+    kobertResult['company'] = data['company']
+    kobertResult['date'] = data['date']
+
+    bandResult = BollingerResult(data['company'], data['date'])
     
+    result = {}
     result['company'] = data['company']
     result['date'] = data['date']
-    
+    result['class'] = kobertResult['class']
+    if bandResult != -1:
+        resultClass = resultModel(logits, bandResult)
+        result['class'] = resultClass
+
     return jsonify(result)
 
 if __name__ == '__main__':   

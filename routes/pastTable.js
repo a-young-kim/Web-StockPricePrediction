@@ -21,7 +21,7 @@ router.post('/getAllTable', function(req, res){
     };
     
     request.post(API_article, function(err, httpResponse, body){
-        res.json(body);
+        res.json(JSON.parse(body));
     });
 });
 
@@ -33,7 +33,6 @@ router.post('/getCompanyTable', function(req, res){
     };
     
     request.post(API_article, function(err, httpResponse, body){
-    
         res.json(body);
     });
 });

@@ -49,10 +49,11 @@ async function getAllTable(){
 
 function setTable(data){
     const tableBody = document.getElementById('table-body');
-
+    console.log(data);
+    console.log(data.length);
     for(let i = 0; i < data.length ; i++){
         const row = document.createElement('tr');
-
+        
         const numberCell = document.createElement('th');
         numberCell.setAttribute('scope', 'row');
         numberCell.textContent = i + 1;
@@ -71,7 +72,7 @@ function setTable(data){
         row.appendChild(predictCell);
         row.appendChild(resultCell);
 
-      tableBody.appendChild(row);
+        tableBody.appendChild(row);
     }
 }
 
@@ -121,10 +122,10 @@ function NoCompanyAlert(){
 }
 
 const companyNames = [
-    'APS', 'DB', 'FSN', 'KG모빌리언스', 'KG이니시스', 'MDS테크', 'NAVER', 'NHN', 'NHNKCP',
+    'APS', 'DB', 'FSN', 'KG모빌리언스', 'KG이니시스', 'MDS테크', 'NHN', 'NHNKCP',
     'NICE', 'SBI핀테크솔루션즈', 'SGA', 'SGA솔루션즈', 'THEE&M', '가비아', '갤럭시아머니트리',
     '고스트스튜디오', '굿센', '나라소프트', '나무기술', '네오리진', '네오위즈', '네오위즈홀딩스',
-    '네이블', '넥슨게임즈', '넵튠', '넷마블', '누리플렉스', '다날', '대신정보통신', '대아티아이',
+    '네이버','네이블', '넥슨게임즈', '넵튠', '넷마블', '누리플렉스', '다날', '대신정보통신', '대아티아이',
     '더블유게임즈', '더존비즈온', '데브시스터즈', '데이타솔루션', '데이터스트림즈', '드래곤플라이',
     '디모아', '디어유', '디지캡', '딥노이드', '라온시큐어', '라온피플', '라피치', '레뷰코퍼레이션',
     '로지시스', '롯데정보통신', '룽투코리아', '리노스', '링넷트', '링크제니시스', '마음AI', '맥스트',

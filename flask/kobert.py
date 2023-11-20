@@ -36,13 +36,8 @@ def kobert(text):
         logits = outputs.detach().cpu().numpy()
 
         # 클래스 레이블을 얻고 예측 결과 출력
-        labels = ["하락", "중립", "상승"]  # 분류에 맞게 클래스 레이블을 정의해야 합니다.
+        labels = ["하락", "횡보", "상승"]  # 분류에 맞게 클래스 레이블을 정의해야 합니다.
         predicted_label = labels[np.argmax(logits)]
-
-        print(np.argmax(logits))
-        print("입력 문장:", input)
-        print("예측된 클래스:", predicted_label)
-        print("클래스 확률:", logits)
 
         result = {
             'text': input[0][0],
@@ -50,6 +45,4 @@ def kobert(text):
             'logits': logits[0].tolist()
         }
 
-    return result
-
-print(kobert("안녕하세요"))
+    return result, logits[0]
